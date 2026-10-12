@@ -1,5 +1,4 @@
 import { cache } from "react";
-
 import { describeChatsPurged, LOG_ACTIONS } from "@/lib/admin-log";
 import { recordAdminLog } from "@/lib/admin-log-store";
 import { DEFAULT_APP_SETTINGS, type AppSettings } from "@/lib/app-settings";
@@ -30,7 +29,7 @@ export const getAppSettings = cache(async (): Promise<AppSettings> => {
 
 export async function updateAppSettings(
     patch: Partial<AppSettings>,
-    updateprismayUserId: string,
+    updatedByUserId: string,
 ) {
     const row = await prisma.appSetting.upsert({
         where: { id: SETTINGS_ID },
@@ -38,9 +37,12 @@ export async function updateAppSettings(
             id: SETTINGS_ID,
             ...DEFAULT_APP_SETTINGS,
             ...patch,
-            updateprismayUserId,
+            updatedByUserId,
         },
-        update: { ...patch, updateprismayUserId },
+        update: {
+            ...patch,
+            updatedByUserId,
+        },
     });
 
     return {
@@ -54,7 +56,9 @@ export async function updateAppSettings(
 export async function purgeExpiredChats(now: Date = new Date()) {
     const { chatRetentionMonths } = await getAppSettings();
 
-    if (chatRetentionMonths === null) return { deleted: 0, cutoff: null };
+    if (chatRetentionMonths === null) {
+        return { deleted: 0, cutoff: null };
+    }
 
     const cutoff = new Date(now);
     cutoff.setMonth(cutoff.getMonth() - chatRetentionMonths);
