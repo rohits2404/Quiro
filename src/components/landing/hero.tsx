@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { HeroPreview } from "./hero-preview";
 import { TrustedBy } from "./trusted-by";
+import { AuthDialogTrigger } from "../auth/auth-dialog-trigger";
 
 const PROOF_POINTS = ["Free for 5 documents", "No card required"];
 
@@ -45,8 +46,13 @@ export function Hero() {
                     </p>
 
                     <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                        Try Quiro Free
-                        <ArrowRightIcon data-icon="inline-end" />
+                        <AuthDialogTrigger
+                            mode="sign-up"
+                            className={CTA_CLASSES}
+                        >
+                            Try Quiro Free
+                            <ArrowRightIcon data-icon="inline-end" />
+                        </AuthDialogTrigger>
                         <Button
                             variant="outline"
                             className={CTA_CLASSES}
