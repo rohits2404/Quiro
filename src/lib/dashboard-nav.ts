@@ -9,13 +9,15 @@ import {
     type LucideIcon,
 } from "lucide-react";
 
-export const ONBOARDING_ROUTE = `/onboarding`;
+export const APP_ROOT = "/app";
 
-export const SETTINGS_ROUTE = `/settings`;
+export const ONBOARDING_ROUTE = `${APP_ROOT}/onboarding`;
+
+export const SETTINGS_ROUTE = `${APP_ROOT}/settings`;
 export const BILLING_ROUTE = `${SETTINGS_ROUTE}/billing`;
 export const DANGER_ZONE_ROUTE = `${SETTINGS_ROUTE}/danger-zone`;
 
-export const ADMIN_ROUTE = `/admin`;
+export const ADMIN_ROUTE = `${APP_ROOT}/admin`;
 export const ADMIN_USERS_ROUTE = `${ADMIN_ROUTE}/users`;
 export const ADMIN_SECURITY_ROUTE = `${ADMIN_ROUTE}/security`;
 export const ADMIN_LOGS_ROUTE = `${ADMIN_ROUTE}/logs`;

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 import { isAdminRole } from "@/lib/admin";
 import { auth, bootstrapAdminIds } from "@/lib/auth";
-import { ONBOARDING_ROUTE } from "@/lib/dashboard-nav";
+import { APP_ROOT, ONBOARDING_ROUTE } from "@/lib/dashboard-nav";
 
 export const getServerSession = cache(async () => {
     return auth.api.getSession({ headers: await headers() });
@@ -34,7 +34,7 @@ export async function requireAdmin() {
     const session = await requireSession();
 
     if (!isAdminUser(session.user)) {
-        redirect("/");
+        redirect(APP_ROOT);
     }
 
     return session;
@@ -65,7 +65,7 @@ export async function redirectIfOnboarded() {
     const organizations = await getOrganizations();
 
     if (organizations.length > 0) {
-        redirect("/");
+        redirect(APP_ROOT);
     }
 }
 
@@ -73,6 +73,6 @@ export async function redirectIfSignedIn() {
     const session = await getServerSession();
 
     if (session) {
-        redirect(ONBOARDING_ROUTE);
+        redirect(APP_ROOT);
     }
 }

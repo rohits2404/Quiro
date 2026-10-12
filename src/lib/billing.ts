@@ -41,7 +41,7 @@ export function planName(planId: PlanId) {
 }
 
 export function planLabel(planId: PlanId) {
-    return `${planName(planId)} plan`;
+    return `${planName(planId)} Plan`;
 }
 
 export function nextPlanUp(planId: PlanId): PaidPlanId | null {
