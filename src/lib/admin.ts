@@ -34,7 +34,7 @@ export type AdminTab = {
 export const ADMIN_TABS: AdminTab[] = [
     { href: ADMIN_ROUTE, label: "Overview", ready: true },
     { href: ADMIN_USERS_ROUTE, label: "Users", ready: true },
-    { href: `${ADMIN_USERS_ROUTE}/new`, label: "Add user", ready: true },
+    { href: `${ADMIN_USERS_ROUTE}/new`, label: "Add User", ready: true },
     { href: ADMIN_SECURITY_ROUTE, label: "Security", ready: true },
     { href: ADMIN_LOGS_ROUTE, label: "Logs", ready: true },
 ];
