@@ -1,6 +1,7 @@
 import "server-only";
 
 import mammoth from "mammoth";
+import { CanvasFactory } from "pdf-parse/worker";
 import { PDFParse } from "pdf-parse";
 import { formatBytes } from "@/lib/chat";
 import { generateText } from "ai";
@@ -68,7 +69,10 @@ export async function extractDocument(
     let pageCount: number | null = null;
 
     if (kind === "pdf") {
-        const parser = new PDFParse({ data: bytes });
+        const parser = new PDFParse({
+            data: new Uint8Array(bytes),
+            CanvasFactory,
+        });
 
         try {
             const result = await parser.getText();
