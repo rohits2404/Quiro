@@ -100,7 +100,7 @@ export function planTerms(view: BillingView) {
     }
 
     if (view.planId === "free") {
-        return `${PLAN_QUESTION_LIMITS.free} questions per month · upgrade any time`;
+        return `${PLAN_QUESTION_LIMITS.free} Questions Per Month · Upgrade Any Time`;
     }
 
     const period = view.period ?? "monthly";

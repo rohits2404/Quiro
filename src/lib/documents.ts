@@ -1,3 +1,5 @@
+import "server-only";
+
 import mammoth from "mammoth";
 import { PDFParse } from "pdf-parse";
 import { formatBytes } from "@/lib/chat";

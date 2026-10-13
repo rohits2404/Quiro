@@ -633,7 +633,10 @@ export async function getChatDocuments(
         },
     });
 
-    return links.map((link) => link.document);
+    return links.map((link) => ({
+        ...link.document,
+        text: link.document.text ?? "",
+    }));
 }
 
 export async function getChatHistory(chatId: string) {

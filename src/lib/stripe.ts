@@ -25,7 +25,10 @@ function createClient() {
         );
     }
 
-    return new Stripe(key, { apiVersion: "2026-07-29.dahlia" });
+    return new Stripe(key, {
+        // @ts-ignore
+        apiVersion: "2026-07-29.dahlia",
+    });
 }
 
 export function getStripe() {
