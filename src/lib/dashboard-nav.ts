@@ -49,26 +49,26 @@ export type DashboardNavGroup = {
 export const dashboardNav: DashboardNavGroup[] = [
     {
         items: [
-            { href: "/", label: "Home", icon: HouseIcon },
+            { href: APP_ROOT, label: "Home", icon: HouseIcon },
             {
-                href: `/chats`,
+                href: `${APP_ROOT}/chats`,
                 label: "Chats",
                 icon: MessageSquareIcon,
                 count: "chats",
             },
             {
-                href: `/library`,
+                href: `${APP_ROOT}/library`,
                 label: "Library",
                 icon: LibraryIcon,
                 count: "documents",
             },
-            { href: `/search`, label: "Search", icon: SearchIcon },
+            { href: `${APP_ROOT}/search`, label: "Search", icon: SearchIcon },
         ],
     },
     {
         title: "Manage",
         items: [
-            { href: `/usage`, label: "Usage", icon: ChartLineIcon },
+            { href: `${APP_ROOT}/usage`, label: "Usage", icon: ChartLineIcon },
             {
                 href: SETTINGS_ROUTE,
                 label: "Settings",
@@ -112,8 +112,8 @@ export function isDashboardNavItemActive(
     item: DashboardNavItem,
     pathname: string,
 ) {
-    return item.href === "/"
-        ? pathname === "/"
+    return item.href === APP_ROOT
+        ? pathname === APP_ROOT
         : pathname === item.href || pathname.startsWith(`${item.href}/`);
 }
 

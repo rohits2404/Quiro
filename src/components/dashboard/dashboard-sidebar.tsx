@@ -75,7 +75,7 @@ function DashboardSidebar({
                 <Link href="/app/chats">
                     <Button size="lg" className="w-full cursor-pointer">
                         <PlusIcon />
-                        New chat
+                        New Chat
                     </Button>
                 </Link>
             </SidebarHeader>
@@ -108,8 +108,6 @@ function DashboardSidebar({
                                         item,
                                         pathname,
                                     );
-                                    // Zero is left off rather than shown: an empty library is
-                                    // already obvious from the page, and "0" reads as a badge.
                                     const count = item.count
                                         ? counts[item.count]
                                         : 0;
@@ -139,8 +137,6 @@ function DashboardSidebar({
                                                 </Badge>
                                             )}
 
-                                            {/* Sub-links only while you're in that section — the
-                        sidebar reference shows none at rest. */}
                                             {item.items && isActive && (
                                                 <SidebarMenuSub className="my-1 gap-0.5">
                                                     {item.items.map(
